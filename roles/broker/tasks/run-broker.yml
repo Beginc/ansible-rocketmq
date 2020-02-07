@@ -1,0 +1,9 @@
+---
+- name: check broker status
+  shell: jps
+  register: jps
+  changed_when: True
+
+- name: run broker
+  shell: nohup mqbroker -c /usr/local/{{ unarchive_filename }}/conf/myconf/broker-{{ brokerId }}.properties > /dev/null 2>&1 &
+  when: not jps.stdout is search("Broker")

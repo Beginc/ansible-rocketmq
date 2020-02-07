@@ -1,0 +1,4 @@
+---
+- include_tasks: copy-archive.yml
+- include_tasks: tune-vm.yml
+- include_tasks: set-path.yml

@@ -1,0 +1,9 @@
+---
+- name: check if $ROCKET_HOME exists
+  shell: cat /etc/bashrc
+  register: bashrc
+  changed_when: True
+
+- name: append $ROCKET_HOME
+  shell: echo ROCKET_HOME=/usr/local/{{ unarchive_filename }} >> /etc/bashrc; echo PATH='$PATH:$ROCKET_HOME'/bin >> /etc/bashrc
+  when: not bashrc.stdout is search("ROCKET_HOME")

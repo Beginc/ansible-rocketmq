@@ -1,0 +1,3 @@
+---
+- include_tasks: setup-java.yml
+- include_tasks: setup-jps.yml

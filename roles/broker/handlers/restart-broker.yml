@@ -1,0 +1,6 @@
+---
+- name: shutdown broker
+  shell: mqshutdown broker
+
+- name: runbroker
+  shell: nohup mqbroker -c /usr/local/{{ unarchive_filename }}/conf/myconf/broker-{{ brokerId }}.properties > /dev/null 2>&1 &

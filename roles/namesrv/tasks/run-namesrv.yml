@@ -1,0 +1,9 @@
+---
+- name: check namesrv status
+  shell: jps
+  register: jps
+  changed_when: True
+
+- name: run namesrv
+  shell: nohup mqnamesrv > /dev/null 2>&1 &
+  when: not jps.stdout is search("Namesrv")

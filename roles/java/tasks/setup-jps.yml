@@ -1,0 +1,3 @@
+---
+- name: install jps
+  yum: name={{ jps_pkg_name }} state=installed

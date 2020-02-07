@@ -1,0 +1,3 @@
+---
+- name: copy zip file
+  unarchive: src={{ archive_filename }} dest=/usr/local creates=/usr/local/{{ unarchive_filename }}

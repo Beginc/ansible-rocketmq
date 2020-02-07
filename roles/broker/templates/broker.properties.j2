@@ -1,0 +1,36 @@
+brokerClusterName={{ brokerClusterName }}
+brokerName={{ brokerName }}
+brokerId={{ brokerId }}
+namesrvAddr=
+{%- for host in groups["namesrv"] -%}
+    {%- if not loop.last -%}
+        {{ host }}:{{ port }};
+    {%- else -%}
+        {{ host }}:{{ port }}
+    {%- endif -%}
+{% endfor %}
+
+defaultTopicQueueNums={{ defaultTopicQueueNums }}
+autoCreateTopicEnable={{ autoCreateTopicEnable }}
+autoCreateSubscriptionGroup={{ autoCreateSubscriptionGroup }}
+listenPort={{ listenPort }}
+deleteWhen={{ deleteWhen }}
+fileReservedTime={{ fileReservedTime }}
+mapedFileSizeCommitLog={{ mapedFileSizeCommitLog }}
+mapedFileSizeConsumeQueue={{ mapedFileSizeConsumeQueue }}
+diskMaxUsedSpaceRatio={{ diskMaxUsedSpaceRatio }}
+storePathRootDir={{ storePathRootDir }}
+storePathCommitLog={{ storePathCommitLog }}
+storePathConsumeQueue={{ storePathConsumeQueue }}
+storePathIndex={{ storePathIndex }}
+storeCheckpoint={{ storeCheckpoint }}
+abortFile={{ abortFile }}
+maxMessageSize={{ maxMessageSize }}
+brokerRole=
+{%- if brokerId == 0 -%}
+SYNC_MASTER
+{%- else -%}
+SLAVE
+{% endif %}
+
+flushDiskType={{ flushDiskType }}

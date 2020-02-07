@@ -1,0 +1,20 @@
+---
+listenPort: 10911
+brokerClusterName: cluster
+brokerName: broker
+defaultTopicQueueNums: 4
+autoCreateTopicEnable: true
+autoCreateSubscriptionGroup: true
+deleteWhen: 04
+fileReservedTime: 120
+mapedFileSizeCommitLog: 1073741824
+mapedFileSizeConsumeQueue: 300000
+diskMaxUsedSpaceRatio: 88
+storePathRootDir: /usr/local/{{ unarchive_filename }}/store
+storePathCommitLog: /usr/local/{{ unarchive_filename }}/store/commitlog
+storePathConsumeQueue: /usr/local/{{ unarchive_filename }}/store/consumequeue
+storePathIndex: /usr/local/{{ unarchive_filename }}/store/index
+storeCheckpoint: /usr/local/{{ unarchive_filename }}/store/checkpoint
+abortFile: /usr/local/{{ unarchive_filename }}/store/abort
+maxMessageSize: 65536
+flushDiskType: SYNC_FLUSH

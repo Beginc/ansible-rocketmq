@@ -1,0 +1,18 @@
+---
+- name: check runserver.sh
+  shell: cat /usr/local/{{ unarchive_filename }}/bin/runserver.sh
+  register: runserver
+  changed_when: True
+
+- name: check runbroker.sh
+  shell: cat /usr/local/{{ unarchive_filename }}/bin/runbroker.sh
+  register: runbroker
+  changed_when: True
+
+- name: copy runserver.sh
+  copy: src=runserver.sh dest=/usr/local/{{ unarchive_filename }}/bin/runserver.sh
+  when: not runserver.stdout is search("-Xms256m -Xmx256m -Xmn128m")
+
+- name: copy runbroker.sh
+  copy: src=runbroker.sh dest=/usr/local/{{ unarchive_filename }}/bin/runbroker.sh
+  when: not runbroker.stdout is search("-Xms256m -Xmx256m -Xmn128m")

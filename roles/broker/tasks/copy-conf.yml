@@ -1,0 +1,9 @@
+---
+- name: mkdir for conf
+  file: path=/usr/local/{{ unarchive_filename }}/conf/myconf/ state=directory
+
+- name: copy broker.properties
+  template: src=broker.properties.j2 dest=/usr/local/{{ unarchive_filename }}/conf/myconf/broker-{{ brokerId }}.properties backup=yes
+  notify:
+    - shutdown broker
+    - runbroker
